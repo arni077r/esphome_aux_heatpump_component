@@ -228,8 +228,8 @@ namespace esphome
         // https://github.com/GrKoR/AUX_HVAC_Protocol#packet_type_ping
         struct packet_ping_answer_body_t
         {
-            uint8_t byte_1C = 0x1C;
-            uint8_t byte_27 = 0x27;
+            uint8_t byte_1C = 0x00;
+            uint8_t byte_27 = 0x00;
             uint8_t zero1 = 0;
             uint8_t zero2 = 0;
             uint8_t zero3 = 0;
