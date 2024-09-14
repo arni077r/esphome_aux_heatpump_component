@@ -126,9 +126,9 @@ namespace esphome
         const std::string Constants::ANTIFUNGUS = "Antifungus";
 
         // params
-        const float Constants::AC_MIN_TEMPERATURE = 16.0;
-        const float Constants::AC_MAX_TEMPERATURE = 32.0;
-        const float Constants::AC_TEMPERATURE_STEP = 0.5;
+        const float Constants::AC_MIN_TEMPERATURE = 30.0;
+        const float Constants::AC_MAX_TEMPERATURE = 60.0;
+        const float Constants::AC_TEMPERATURE_STEP = 1.0;
         // AUX_AC_MIN_INVERTER_POWER_LIMIT and AUX_AC_MAX_INVERTER_POWER_LIMIT will be defined by the ESPHome code generator at compile time
         const uint8_t Constants::AC_MIN_INVERTER_POWER_LIMIT = AUX_AC_MIN_INVERTER_POWER_LIMIT;
         const uint8_t Constants::AC_MAX_INVERTER_POWER_LIMIT = AUX_AC_MAX_INVERTER_POWER_LIMIT;
@@ -237,7 +237,6 @@ namespace esphome
             uint8_t zero5 = 0;
             uint8_t zero6 = 0;
         };
-
         // тело большого информационного пакета
         // https://github.com/GrKoR/AUX_HVAC_Protocol#packet_cmd_21
         struct packet_big_info_body_t
@@ -1400,8 +1399,8 @@ namespace esphome
                     // заполняем тело пакета
                     packet_ping_answer_body_t *ping_body;
                     ping_body = (packet_ping_answer_body_t *)(_outPacket.body);
-                    ping_body->byte_1C = 0x1C;
-                    ping_body->byte_27 = 0x27;
+                    ping_body->byte_1C = 0x00;
+                    ping_body->byte_27 = 0x00;
 
                     // расчет контрольной суммы и прописывание её в пакет
                     _outPacket.crc = (packet_crc_t *)&(_outPacket.data[AC_HEADER_SIZE + _outPacket.header->body_length]);
